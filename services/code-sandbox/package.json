@@ -1,0 +1,33 @@
+{
+  "name": "@may/code-sandbox",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CodeSandbox service for the May platform",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist *.tsbuildinfo",
+    "lint": "eslint src/",
+    "test": "vitest run",
+    "test:pbt": "vitest run --testPathPattern=pbt"
+  },
+  "dependencies": {
+    "@may/types": "*",
+    "@may/utils": "*"
+  },
+  "devDependencies": {
+    "@may/testing": "*",
+    "typescript": "^5.7.0",
+    "rimraf": "^6.0.0",
+    "vitest": "^2.1.0"
+  },
+  "type": "module"
+}
