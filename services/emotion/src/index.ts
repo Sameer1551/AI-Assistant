@@ -1,7 +1,10 @@
 /**
- * @may/emotion - Emotion Service
- *
- * Entry point for the Emotion service.
+ * @may/emotion — Emotion Service entry point
  */
 
-export {};
+export { EmotionService, validateEmotionalStateRanges } from './emotion-service.js';
+export type {
+  ConsentedSensor,
+  SensorSignal,
+  FuseRequest,
+} from './emotion-service.js';

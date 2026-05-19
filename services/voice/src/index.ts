@@ -1,7 +1,14 @@
 /**
- * @may/voice - Voice Service
- *
- * Entry point for the Voice service.
+ * @may/voice — Voice Service entry point
  */
 
-export {};
+export { VoiceService } from './voice-service.js';
+export type {
+  TranscribeRequest,
+  TranscriptionResult,
+  SynthesizeRequest,
+  SynthesisResult,
+  ISTTAdapter,
+  ITTSAdapter,
+  IConsentValidator,
+} from './voice-service.js';

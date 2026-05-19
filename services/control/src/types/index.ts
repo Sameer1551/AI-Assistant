@@ -3,4 +3,4 @@
  * Types that are internal to this service.
  */
 
-export {};
+export type { ActionState } from '../interfaces/action-executor.js';

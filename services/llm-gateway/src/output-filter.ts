@@ -17,7 +17,6 @@ import type {
   TenantOutputPolicy,
   OutputFilterResult,
   OutputRedaction,
-  FilteredContentCategory,
 } from './interfaces/index.js';
 
 /**
@@ -34,7 +33,7 @@ interface SecretPattern {
 const SECRET_PATTERNS: readonly SecretPattern[] = [
   // API keys with common prefixes
   {
-    pattern: /\b(?:sk|pk|api|key|token)[_\-][a-zA-Z0-9]{20,}\b/g,
+    pattern: /\b(?:sk|pk|api|key|token)[_\-][a-zA-Z0-9_\-]{20,}\b/g,
     description: 'API key/token with prefix',
   },
   // AWS access keys

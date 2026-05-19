@@ -43,7 +43,7 @@ const INJECTION_PATTERNS: readonly InjectionPattern[] = [
   {
     category: 'ignore_instructions',
     severity: 'high',
-    pattern: /\b(?:ignore|disregard|forget|override|bypass)\s+(?:all\s+)?(?:previous|prior|above|earlier|preceding|the)\s+(?:instructions?|prompts?|rules?|guidelines?|constraints?|directives?)\b/gi,
+    pattern: /\b(?:ignore|disregard|forget|override|bypass)\s+(?:all\s+)?(?:previous|prior|above|earlier|preceding|the|your)\s+(?:instructions?|prompts?|rules?|guidelines?|constraints?|directives?)\b/gi,
     description: 'Ignore previous instructions pattern',
     confidence: 0.95,
   },
@@ -73,7 +73,7 @@ const INJECTION_PATTERNS: readonly InjectionPattern[] = [
   {
     category: 'system_prompt_leak',
     severity: 'high',
-    pattern: /\b(?:reveal|show|display|print|output|repeat|echo|tell\s+me)\s+(?:your|the)\s+(?:system\s+prompt|initial\s+prompt|instructions?|hidden\s+(?:prompt|instructions?)|original\s+(?:prompt|instructions?))\b/gi,
+    pattern: /\b(?:reveal|show|display|print|output|repeat|echo|tell\s+me)\s+(?:me\s+)?(?:your|the)\s+(?:system\s+prompt|initial\s+prompt|instructions?|hidden\s+(?:prompt|instructions?)|original\s+(?:prompt|instructions?))\b/gi,
     description: 'System prompt reveal request',
     confidence: 0.96,
   },
@@ -179,7 +179,7 @@ const INJECTION_PATTERNS: readonly InjectionPattern[] = [
   {
     category: 'context_manipulation',
     severity: 'high',
-    pattern: /\b(?:the\s+(?:above|previous)\s+(?:was|is)\s+(?:a\s+)?(?:test|joke|example)|that\s+was\s+(?:just\s+)?(?:a\s+)?test)\b/gi,
+    pattern: /\b(?:the\s+(?:above|previous)\s+(?:was|is)\s+(?:just\s+)?(?:a\s+)?(?:test|joke|example)|that\s+was\s+(?:just\s+)?(?:a\s+)?test)\b/gi,
     description: 'Context dismissal attempt',
     confidence: 0.89,
   },
