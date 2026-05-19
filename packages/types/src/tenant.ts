@@ -8,19 +8,8 @@
  */
 
 import type { TenantId } from './branded.js';
-
-/**
- * Data classification levels for the governance pipeline.
- * Determines retention, encryption, and access control policies.
- */
-export type DataClassification =
-  | 'public'
-  | 'internal'
-  | 'confidential'
-  | 'restricted'
-  | 'regulated_pii'
-  | 'regulated_health'
-  | 'regulated_financial';
+import type { DataClassification } from './governance.js';
+import type { BudgetConfig } from './cost.js';
 
 /**
  * PII redaction posture — how detected PII is handled.
@@ -30,37 +19,6 @@ export type DataClassification =
  * - redact: Replace PII with redaction markers before processing.
  */
 export type PIIRedactionPosture = 'block' | 'flag' | 'redact';
-
-/**
- * Budget enforcement action when hard limit is reached.
- *
- * - reject: Reject the request with BUDGET_EXCEEDED error.
- * - alert_only: Allow the request but emit a high-severity alert.
- */
-export type BudgetHardLimitAction = 'reject' | 'alert_only';
-
-/**
- * Budget configuration for cost control.
- */
-export interface BudgetConfig {
-  /** Tenant this budget applies to. */
-  readonly tenant_id: TenantId;
-
-  /** If set, applies budget to a specific principal. Otherwise applies to entire tenant. */
-  readonly principal_id?: string;
-
-  /** Maximum cost units allowed per day. */
-  readonly daily_limit: number;
-
-  /** Maximum cost units allowed per calendar month. */
-  readonly monthly_limit: number;
-
-  /** Thresholds (as fractions, e.g., [0.5, 0.75, 0.9]) at which warning alerts are emitted. */
-  readonly warning_thresholds: readonly number[];
-
-  /** Action to take when the hard budget limit is exceeded. */
-  readonly hard_limit_action: BudgetHardLimitAction;
-}
 
 /**
  * PII redaction policy configuration for a tenant.
