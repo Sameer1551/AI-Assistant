@@ -16,19 +16,6 @@ import type {
 } from './interfaces/classification-service.js';
 
 /**
- * Default classification taxonomy that all tenants must support at minimum.
- */
-const DEFAULT_TAXONOMY: readonly DataClassification[] = [
-  'public',
-  'internal',
-  'confidential',
-  'restricted',
-  'regulated_pii',
-  'regulated_health',
-  'regulated_financial',
-];
-
-/**
  * Keyword-based classification inference rules.
  * Maps content patterns to likely classifications.
  */
@@ -66,7 +53,7 @@ export class ClassificationService implements IClassificationService {
    * @returns The classification result
    * @throws Error if the explicit classification is not in the tenant's taxonomy
    */
-  async classify(request: ClassifyRequest, ctx: RequestContext): Promise<ClassifyResult> {
+  async classify(request: ClassifyRequest, _ctx: RequestContext): Promise<ClassifyResult> {
     const tenantId = request.tenant_id;
     const allowedClassifications = await this.taxonomyStore.getAllowedClassifications(tenantId);
 

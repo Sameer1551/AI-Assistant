@@ -108,10 +108,10 @@ export class GoldenSignalComputer implements IGoldenSignalComputer {
    */
   private percentile(sorted: readonly number[], p: number): number {
     if (sorted.length === 0) return 0;
-    if (sorted.length === 1) return sorted[0];
+    if (sorted.length === 1) return sorted[0]!;
 
     const index = Math.ceil((p / 100) * sorted.length) - 1;
-    return sorted[Math.max(0, Math.min(index, sorted.length - 1))];
+    return sorted[Math.max(0, Math.min(index, sorted.length - 1))]!;
   }
 
   /**

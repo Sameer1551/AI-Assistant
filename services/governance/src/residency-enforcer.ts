@@ -54,7 +54,7 @@ export class ResidencyEnforcer implements IResidencyEnforcer {
    */
   async validate(
     request: ResidencyValidationRequest,
-    ctx: RequestContext,
+    _ctx: RequestContext,
   ): Promise<ResidencyValidationResult> {
     const configuredRegion = await this.taxonomyStore.getResidencyRegion(request.tenant_id);
 

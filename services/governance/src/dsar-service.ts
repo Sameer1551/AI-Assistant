@@ -32,14 +32,6 @@ import type {
  * - Machine-readable export generation (within 30 days)
  */
 export class DSARService implements IDSARService {
-  /** Default owning services that receive erasure orders */
-  private static readonly DEFAULT_OWNING_SERVICES = [
-    'Memory_Service',
-    'Habit_Service',
-    'Workflow_Service',
-    'Telemetry_Service',
-  ];
-
   constructor(
     private readonly store: IDSARStore,
     private readonly dataOwningServices: readonly IDataOwningService[],

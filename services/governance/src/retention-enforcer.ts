@@ -26,7 +26,7 @@ const DELETION_DEADLINE_MS = 24 * 60 * 60 * 1000;
  * Classifications that require cryptographic shredding rather than simple deletion.
  * These are regulated data types where deletion must be provably irreversible.
  */
-const SHRED_CLASSIFICATIONS: ReadonlySet<DataClassification> = new Set([
+const SHRED_CLASSIFICATIONS: ReadonlySet<DataClassification> = new Set<DataClassification>([
   'regulated_pii',
   'regulated_health',
   'regulated_financial',
