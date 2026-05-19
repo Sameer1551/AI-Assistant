@@ -1,7 +1,8 @@
-/**
- * @may/personality - Personality Service
- *
- * Entry point for the Personality service.
- */
-
-export {};
+export { PersonalityService } from './personality-service.js';
+export type { PersonalityServiceDeps } from './personality-service.js';
+export type {
+  IPersonalityIdGenerator,
+  IPersonalityClock,
+  IPersonalityAlertEmitter,
+  StyleSelectionContext,
+} from './interfaces/index.js';

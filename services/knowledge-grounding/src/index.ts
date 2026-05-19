@@ -1,7 +1,8 @@
-/**
- * @may/knowledge-grounding - KnowledgeGrounding Service
- *
- * Entry point for the KnowledgeGrounding service.
- */
-
-export {};
+export { KnowledgeGroundingService } from './knowledge-grounding-service.js';
+export type { KnowledgeGroundingDeps } from './knowledge-grounding-service.js';
+export type {
+  IWebSearchProvider,
+  ILocalRagProvider,
+  IPromptInjectionDefense,
+  IFreshnessClassifier,
+} from './interfaces/index.js';

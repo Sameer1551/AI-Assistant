@@ -1,7 +1,8 @@
-/**
- * @may/cognitive-state - CognitiveState Service
- *
- * Entry point for the CognitiveState service.
- */
-
-export {};
+export { CognitiveStateService } from './cognitive-state-service.js';
+export type { CognitiveStateServiceDeps } from './cognitive-state-service.js';
+export type {
+  ObservableSignals,
+  ICognitiveIdGenerator,
+  ICognitiveClock,
+  IProactiveIntelligencePublisher,
+} from './interfaces/index.js';

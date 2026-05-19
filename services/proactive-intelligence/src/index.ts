@@ -1,7 +1,8 @@
-/**
- * @may/proactive-intelligence - ProactiveIntelligence Service
- *
- * Entry point for the ProactiveIntelligence service.
- */
-
-export {};
+export { ProactiveIntelligenceService } from './proactive-intelligence-service.js';
+export type { ProactiveServiceDeps, ProactiveConfig } from './proactive-intelligence-service.js';
+export type {
+  IProactiveIdGenerator,
+  IProactiveClock,
+  IAuditPublisher,
+  UserContext,
+} from './interfaces/index.js';

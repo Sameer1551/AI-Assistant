@@ -1,7 +1,3 @@
-/**
- * @may/context-intelligence - ContextIntelligence Service
- *
- * Entry point for the ContextIntelligence service.
- */
-
-export {};
+export { ContextIntelligenceService } from './context-intelligence-service.js';
+export type { ContextIntelligenceDeps } from './context-intelligence-service.js';
+export type { IContextProvider, IContextIdGenerator, IContextClock } from './interfaces/index.js';

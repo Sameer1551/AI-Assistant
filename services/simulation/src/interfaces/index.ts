@@ -1,6 +1,18 @@
-/**
- * Simulation service interfaces.
- * Service contracts and dependency injection interfaces.
- */
+import type { SimulationResult } from '@may/types';
 
-export {};
+export interface ISimulationIdGenerator {
+  uuid(): string;
+}
+
+export interface ISimulationClock {
+  nowISO(): string;
+  nowMs(): number;
+}
+
+export interface IAuditPublisher {
+  publishAudit(event: any): Promise<void>;
+}
+
+export interface IActionPredictor {
+  predict(action: any): Promise<Partial<SimulationResult>>;
+}

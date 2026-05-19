@@ -1,7 +1,8 @@
-/**
- * @may/simulation - Simulation Service
- *
- * Entry point for the Simulation service.
- */
-
-export {};
+export { SimulationService } from './simulation-service.js';
+export type { SimulationServiceDeps } from './simulation-service.js';
+export type {
+  ISimulationIdGenerator,
+  ISimulationClock,
+  IAuditPublisher,
+  IActionPredictor,
+} from './interfaces/index.js';
