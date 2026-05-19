@@ -1,4 +1,4 @@
-import type { ReflectionRecord, FailurePattern } from '@may/types';
+import type { ReflectionRecord } from '@may/types';
 
 export interface IReflectionIdGenerator {
   uuid(): string;

@@ -5,7 +5,7 @@
  * @see Requirements 47.1–47.7
  */
 
-import type { PlanTree, PlanNode, PlanChecklist, ChecklistItem, PlanLevel, PlanNodeStatus } from '@may/types';
+import type { PlanTree, PlanNode } from '@may/types';
 import type {
   IPlanningIdGenerator,
   IPlanningClock,

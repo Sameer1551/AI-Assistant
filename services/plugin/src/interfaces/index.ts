@@ -1,4 +1,4 @@
-import type { PluginManifest, PluginExecutionResult, PluginPermission } from '@may/types';
+import type { PluginManifest, PluginPermission } from '@may/types';
 
 export interface IPluginIdGenerator {
   uuid(): string;

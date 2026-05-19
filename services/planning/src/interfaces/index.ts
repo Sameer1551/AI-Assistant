@@ -1,4 +1,4 @@
-import type { PlanTree, PlanNode } from '@may/types';
+import type { PlanTree } from '@may/types';
 
 export interface IPlanningIdGenerator {
   uuid(): string;

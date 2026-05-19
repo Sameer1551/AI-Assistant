@@ -1,7 +1,11 @@
-/**
- * @may/fine-tuning - FineTuning Service
- *
- * Entry point for the FineTuning service.
- */
-
-export {};
+export { FineTuningService } from './fine-tuning-service.js';
+export type { FineTuningServiceDeps } from './fine-tuning-service.js';
+export type {
+  IFineTuningIdGenerator,
+  IFineTuningClock,
+  IAuditPublisher,
+  IBenchmarkEngine,
+  IResourceGovernor,
+  IFineTuningStore,
+  ILoRATrainer,
+} from './interfaces/index.js';

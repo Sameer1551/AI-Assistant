@@ -5,7 +5,7 @@
  * @see Requirements 45.1–45.7
  */
 
-import type { SimulationResult, SimulationRecommendation, RollbackCost } from '@may/types';
+import type { SimulationResult } from '@may/types';
 import type {
   ISimulationIdGenerator,
   ISimulationClock,

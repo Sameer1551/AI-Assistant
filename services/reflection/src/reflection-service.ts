@@ -5,7 +5,7 @@
  * @see Requirements 46.1–46.5
  */
 
-import type { ReflectionRecord, UserSignal, FailurePattern } from '@may/types';
+import type { ReflectionRecord, UserSignal } from '@may/types';
 import type {
   IReflectionIdGenerator,
   IReflectionClock,
@@ -30,7 +30,6 @@ export interface ReflectionServiceDeps {
 export class ReflectionService {
   private readonly idGenerator: IReflectionIdGenerator;
   private readonly clock: IReflectionClock;
-  private readonly auditPublisher: IAuditPublisher;
   private readonly selfImprovementPublisher: ISelfImprovementPublisher;
   private readonly store: IReflectionStore;
   private readonly config: ReflectionConfig;
@@ -38,7 +37,6 @@ export class ReflectionService {
   constructor(deps: ReflectionServiceDeps) {
     this.idGenerator = deps.idGenerator;
     this.clock = deps.clock;
-    this.auditPublisher = deps.auditPublisher;
     this.selfImprovementPublisher = deps.selfImprovementPublisher;
     this.store = deps.store;
     this.config = {
@@ -105,7 +103,7 @@ export class ReflectionService {
    *
    * @see Requirement 46.3
    */
-  async identifyFailurePatterns(tenantId: string, principalId: string): Promise<FailurePattern[]> {
+  async identifyFailurePatterns(tenantId: string, principalId: string): Promise<{ pattern_id: string; description: string; occurrence_count: number; first_seen: string; last_seen: string; affected_action_types: readonly string[]; suggested_mitigation: string }[]> {
     const records = await this.store.getReflections(tenantId, principalId);
     const failures = records.filter(r => r.user_signal === 'rejected' || r.usefulness_score < 0.3);
 
@@ -114,12 +112,12 @@ export class ReflectionService {
     // Trivial group-by "lesson" for demo purposes of pattern detection
     const grouped = new Map<string, ReflectionRecord[]>();
     for (const f of failures) {
-      const g = grouped.get(f.lesson) ?? [];
-      g.push(f);
-      grouped.set(f.lesson, g);
+      const arr = grouped.get(f.lesson) ?? [];
+      arr.push(f);
+      grouped.set(f.lesson, arr);
     }
 
-    const patterns: FailurePattern[] = [];
+    const patterns: { pattern_id: string; description: string; occurrence_count: number; first_seen: string; last_seen: string; affected_action_types: readonly string[]; suggested_mitigation: string }[] = [];
     for (const [lesson, group] of grouped.entries()) {
       if (group.length >= 3) {
         const sorted = group.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
@@ -129,7 +127,7 @@ export class ReflectionService {
           occurrence_count: group.length,
           first_seen: sorted[0]!.timestamp,
           last_seen: sorted[sorted.length - 1]!.timestamp,
-          affected_action_types: Array.from(new Set(group.map(g => 'generic_action'))),
+          affected_action_types: ['generic_action'],
           suggested_mitigation: `Review and adjust strategy for: ${lesson}`,
         });
       }
