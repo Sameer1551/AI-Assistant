@@ -1,0 +1,15 @@
+apiVersion: v2
+name: may-platform
+description: Helm Chart for May Platform Services on Kubernetes
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+dependencies:
+  - name: postgresql
+    version: 12.1.0
+    repository: https://charts.bitnami.com/bitnami
+    condition: postgresql.enabled
+  - name: redis
+    version: 17.1.0
+    repository: https://charts.bitnami.com/bitnami
+    condition: redis.enabled

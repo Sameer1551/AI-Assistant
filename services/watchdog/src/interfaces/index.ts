@@ -1,6 +1,18 @@
-/**
- * Watchdog service interfaces.
- * Service contracts and dependency injection interfaces.
- */
+export interface IWatchdogIdGenerator {
+  uuid(): string;
+}
 
-export {};
+export interface IWatchdogClock {
+  nowISO(): string;
+  nowMs(): number;
+}
+
+export interface IAuditPublisher {
+  publishAudit(event: any): Promise<void>;
+}
+
+export interface AgentHealthStats {
+  readonly activeAgentsCount: number;
+  readonly longestRunningAgentId?: string;
+  readonly agentsApproachingLimits: string[];
+}

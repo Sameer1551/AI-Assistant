@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  identity-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: node services/identity/dist/index.js
+    ports:
+      - "50051:50051"
+    environment:
+      - NODE_ENV=development
+      - PORT=50051
+
+  watchdog-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: node services/watchdog/dist/index.js
+    ports:
+      - "50052:50052"
+    environment:
+      - NODE_ENV=development
+      - PORT=50052
+
+  compute-fabric-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: node services/compute-fabric/dist/index.js
+    ports:
+      - "50053:50053"
+    environment:
+      - NODE_ENV=development
+      - PORT=50053
+
+  governance-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: node services/governance/dist/index.js
+    ports:
+      - "50054:50054"
+    environment:
+      - NODE_ENV=development
+      - PORT=50054

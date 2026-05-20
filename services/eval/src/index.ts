@@ -1,7 +1,2 @@
-/**
- * @may/eval - Eval Service
- *
- * Entry point for the Eval service.
- */
-
-export {};
+export { EvalService } from './eval-service.js';
+export type { IEvalIdGenerator, IEvalClock, IEvalStore, GoldenEvalItem, GoldenEvalSet, EvalRunResult } from './interfaces/index.js';

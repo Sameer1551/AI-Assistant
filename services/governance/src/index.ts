@@ -53,3 +53,6 @@ export { InMemoryTenantPolicyStore } from './in-memory-tenant-policy-store.js';
 // Implementations - DSAR (Task 5.5)
 export { DSARService } from './dsar-service.js';
 export { InMemoryDSARStore } from './in-memory-dsar-store.js';
+
+// Implementations - Tenant Isolation (Task 48)
+export { TenantIsolationService } from './tenant-isolation.js';

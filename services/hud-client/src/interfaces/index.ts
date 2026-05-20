@@ -1,6 +1,16 @@
-/**
- * HudClient service interfaces.
- * Service contracts and dependency injection interfaces.
- */
 
-export {};
+
+export interface IHudIdGenerator {
+  uuid(): string;
+}
+
+export interface IHudClock {
+  nowISO(): string;
+  nowMs(): number;
+}
+
+export interface IEdgeAgentClient {
+  pauseAgent(): Promise<void>;
+  resumeAgent(): Promise<void>;
+  triggerKillSwitch(): Promise<void>;
+}

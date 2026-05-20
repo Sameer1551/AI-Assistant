@@ -1,0 +1,28 @@
+replicaCount: 2
+
+image:
+  repository: may-platform-service
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  port: 50051
+
+postgresql:
+  enabled: true
+  auth:
+    database: may_db
+    username: may_admin
+
+redis:
+  enabled: true
+  architecture: standalone
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 200m
+    memory: 256Mi
