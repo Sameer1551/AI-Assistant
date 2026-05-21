@@ -6,7 +6,8 @@
   "description": "Enterprise AI Assistant Platform (May) - Multi-tenant service-oriented AI assistant",
   "workspaces": [
     "packages/*",
-    "services/*"
+    "services/*",
+    "apps/*"
   ],
   "scripts": {
     "build": "turbo run build",

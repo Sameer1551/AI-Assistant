@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-transparent text-may-text antialiased;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Inter', Roboto,
+      Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow: hidden;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-[#1a1a2e]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.15), 0 0 60px rgba(0, 229, 255, 0.05);
+  }
+
+  .message-user {
+    @apply bg-may-primary/20 border border-may-primary/30 rounded-2xl rounded-br-md;
+  }
+
+  .message-assistant {
+    @apply bg-white/5 border border-white/10 rounded-2xl rounded-bl-md;
+  }
+}
